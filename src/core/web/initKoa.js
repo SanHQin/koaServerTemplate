@@ -50,7 +50,8 @@ koa.use(json());
 
 //请求日志
 koa.use(koaLogger((str)=>{
-    global.logger.setLog({message:str.replace(/\[[0-9]+m/g,"")});
+    // global.logger.setLog({message:str.replace(/\[[0-9]+m/g,"")});
+    console.log(str)
 }));
 
 //静态文件路径

@@ -9,6 +9,8 @@ const koa = require("./web/initKoa");
 const initKoaRouter = require("./web/initKoaRouter")
 //连接数据库
 const mongodb = require("./mongodb/initMongodb");
+//初始化数据库表
+const initModule = require('./mongodb/initModule')
 //文件工具
 const { getFileAllInfo } = require("../tools/fileTool");
 
@@ -24,11 +26,13 @@ mongodb.once("open",function (){
             if(module) {
                 //初始化http接口
                 initKoaRouter(koa, module, parentPath);
+                //初始化表
+                initModule(mongodb,module,parentPath);
             }
         }
     })
     const endTime = new Date().getTime()
-    logger.setLog({message:`路由与数据库加载完成！ ✧(≖ ◡ ≖✿) 耗时${endTime - starTime}ms`})
+    logger.setLog({message:`路由与数据库加载完成！ ✧(≖ ◡ ≖✿) 耗时：${endTime - starTime}ms`})
 })
 
 let app = {
