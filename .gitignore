@@ -1,0 +1,6 @@
+.idea
+logs/*
+public/uploadTemp/*
+public/file/image/*
+public/file/other/*
+node_modules
