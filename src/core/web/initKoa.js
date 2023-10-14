@@ -49,8 +49,8 @@ koa.use(koaBody({
 koa.use(json());
 
 //请求日志
-koa.use(koaLogger((str,args)=>{
-    global.logger.reqLog(str.replace(/\[[0-9]+m/g,""));
+koa.use(koaLogger((str)=>{
+    global.logger.setLog({message:str.replace(/\[[0-9]+m/g,"")});
 }));
 
 //静态文件路径
@@ -62,7 +62,8 @@ koa.use(koaStatic(global.path.join(global.appDir,'./public'), {
 
 // 发生错误
 koa.on("error",(err,ctx)=>{
-    global.logger.errLog(err.message,ctx);
+    // global.logger.errLog(err.message,ctx);
+    global.logger.setLog({type:"error",message:err.message,ctx});
 });
 
 

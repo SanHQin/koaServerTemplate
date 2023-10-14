@@ -48,7 +48,8 @@ global.host = hostUrl;
 
 //开启服务器
 server.listen(PORT,(err) =>{
-    if(err)return global.logger.errLog(err);
-    global.logger.infoLog(`系统已启动 :${localhostUrl} or ${hostUrl} ╰(￣ω￣ｏ)`);
+    if(err)return global.logger.setLog({type:"error",message:err});
+    // global.logger.infoLog(`系统已启动 :${localhostUrl} or ${hostUrl} ╰(￣ω￣ｏ)`);
+    global.logger.setLog({message:`系统已启动 :${localhostUrl} or ${hostUrl} ╰(￣ω￣ｏ)`})
 });
 

@@ -1,7 +1,7 @@
 const logger = global.logger;
 //获取系统开始加载时间戳
 const starTime = new Date().getTime();
-logger.infoLog("系统开始加载...(～﹃～)~zZ")
+logger.setLog({message:"系统开始加载...(～﹃～)~zZ"})
 
 //加载koa框架
 const koa = require("./web/initKoa");
@@ -15,7 +15,7 @@ const { getFileAllInfo } = require("../tools/fileTool");
 
 
 mongodb.once("open",function (){
-    logger.infoLog("mongodb数据库连接成功! \\^o^/");
+    logger.setLog({message:"mongodb数据库连接成功! \\^o^/"})
     //modules文件路径
     let modulePath = global.path.join(global.appDir,'/src/modules');
     getFileAllInfo(modulePath,(fileName,filePath,parentPath)=>{
@@ -28,7 +28,7 @@ mongodb.once("open",function (){
         }
     })
     const endTime = new Date().getTime()
-    global.logger.infoLog(`路由与数据库加载完成！ ✧(≖ ◡ ≖✿) 耗时${endTime - endTime}ms`)
+    logger.setLog({message:`路由与数据库加载完成！ ✧(≖ ◡ ≖✿) 耗时${endTime - starTime}ms`})
 })
 
 let app = {
