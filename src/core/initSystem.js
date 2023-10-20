@@ -12,11 +12,9 @@ const mongodb = require("./mongodb/initMongodb");
 //初始化数据库表
 const initModule = require('./mongodb/initModule')
 //文件工具
-const { getFileAllInfo } = require("../tools/fileTool");
+const { getFileAllInfo } = require("../utils/fileTool");
 
-
-
-mongodb.once("open",function (){
+mongodb(global.config.mongoDB,(db)=>{
     logger.setLog({message:"mongodb数据库连接成功! \\^o^/"})
     //modules文件路径
     let modulePath = global.path.join(global.appDir,'/src/modules');
@@ -27,19 +25,13 @@ mongodb.once("open",function (){
                 //初始化http接口
                 initKoaRouter(koa, module, parentPath);
                 //初始化表
-                initModule(mongodb,module,parentPath);
+                initModule(db,module,parentPath);
             }
         }
     })
-    const endTime = new Date().getTime()
-    logger.setLog({message:`路由与数据库加载完成！ ✧(≖ ◡ ≖✿) 耗时：${endTime - starTime}ms`})
+    logger.setLog({message:`路由与数据库加载完成！ ✧(≖ ◡ ≖✿) 耗时：${new Date().getTime() - starTime}ms`})
 })
 
-let app = {
-    koa,
-    mongodb
-}
-
-module.exports = app;
+module.exports = koa;
 
 
