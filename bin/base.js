@@ -37,7 +37,7 @@ const PORT = normalizePort(process.env.PORT || "2004");
 //主机地址
 const myHost = global.config.host || getIPAddress();
 
-const server = http.createServer(app.koa.callback());
+const server = http.createServer(app.callback());
 
 
 
