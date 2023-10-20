@@ -1,4 +1,4 @@
-const file = require("../../tools/fileTool")
+const file = require("../../utils/fileTool")
 
 module.exports = (koa,module,filePath)=> {
     if(!module.controller)return;

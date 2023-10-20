@@ -1,5 +1,5 @@
 const path = require("path");
-const file = require("../../tools/fileTool")
+const file = require("../../utils/fileTool")
 
 
 module.exports = (mongodb,moduleData,parentPath) =>{

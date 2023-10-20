@@ -2,7 +2,7 @@
 global.appDir = __dirname;
 
 //日志配置
-global.logger = require('./src/tools/log4JS')
+global.logger = require('./src/utils/log4JS')
 
 //path路径
 global.path = require("path");
