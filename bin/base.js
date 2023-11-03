@@ -32,7 +32,7 @@ function normalizePort(val) {
 }
 
 //端口号
-const PORT = normalizePort(process.env.PORT || "2004");
+const PORT = normalizePort(global.config.PORT || "2004");
 
 //主机地址
 const myHost = global.config.host || getIPAddress();
