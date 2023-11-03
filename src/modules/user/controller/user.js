@@ -2,10 +2,6 @@ const router = require("koa-router")();
 const userModel = require("../model/user").model;
 
 
-router.get("/",async ctx=>{
-    ctx.body="(*/ω＼*)";
-})
-
 router.post("/add",async ctx=>{
     let form = ctx.request.body;
     try{

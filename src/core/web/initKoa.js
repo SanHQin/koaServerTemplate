@@ -38,13 +38,15 @@ koa.use(koaBody({
     multipart: true,
     formidable: {
         maxFileSize: 100 * 1024 * 1024, // 设置上传文件大小最大限制，默认2M
-        uploadDir:global.path.join(global.appDir,'./public/uploadTemp') //可以填写一个路径，不填写默认为 os.tmpDir()
+        uploadDir:global.path.join(global.appDir,global.config.tempDir||'./temp') //可以填写一个路径，不填写默认为 os.tmpDir()
     },
     enableTypes: ['json', 'form', 'text'],
     extendTypes: {
         text: ['text/xml', 'koalication/xml']
     }
 }));
+
+
 
 koa.use(json());
 
