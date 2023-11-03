@@ -9,7 +9,6 @@ async function saveFile(file){
     //文件名后缀
     const suffix = oldFileName.split('.').pop();
     //缓存文件路径
-    // const filePath = global.path.join(global.appDir,global.config.temp,`${newFileName}.${suffix}`);
     const newFilePath = global.path.join(global.appDir,global.config.fileDir,`${newFileName}.${suffix}`);
     const fileUrl = `${global.host}${global.config.fileDir.replace('/public/','')}/${newFileName}.${suffix}`;
     await fs.renameSync(fileTempPath,newFilePath);
