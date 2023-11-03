@@ -1,4 +1,5 @@
 .idea
 logs/*
-
+temp/*
+public/file/*
 node_modules
