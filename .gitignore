@@ -1,6 +1,5 @@
 .idea
 logs/*
-public/uploadTemp/*
-public/file/image/*
-public/file/other/*
+temp/*
+public/file/*
 node_modules
